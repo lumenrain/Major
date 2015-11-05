@@ -1,0 +1,19 @@
+{
+  "name": "Major",
+  "version": "0.0.0",
+  "homepage": "https://github.com/lumenrain/Major",
+  "authors": [
+    "lumenrain <lumenrain@gmail.com>"
+  ],
+  "description": "Share and explore new music",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.7",
+    "angular-resource": "~1.4.7",
+    "angular-route": "~1.4.7"
+  }
+}
