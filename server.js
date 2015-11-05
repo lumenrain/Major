@@ -24,10 +24,14 @@ app.use(stylus.middleware(
 
 app.use(express.static(__dirname + '/public'));
 
+app.get('/partials/:partialPath', function(req, res) {
+    res.render('partials/' + req.params.partialPath);
+});
+
 
 app.get('*', function(req, res){
     res.render('index');
-})
+});
 
 var port  = 1337;
 app.listen(port);
