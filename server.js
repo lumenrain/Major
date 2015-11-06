@@ -4,7 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser');
     mongoose = require('mongoose');
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
 
@@ -25,7 +25,14 @@ app.use(stylus.middleware(
 
 app.use(express.static(__dirname + '/public'));
 
-mongoose.connect('mongodb://localhost/Major');
+    if(env === 'development') {
+        mongoose.connect('mongodb://localhost/Major');
+    }
+    else {
+        mongoose.connect('mongodb://adomas:major@ds047524.mongolab.com:47524/major');
+    }
+
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function callback() {
@@ -51,6 +58,6 @@ app.get('*', function(req, res) {
     });
 });
 
-var port  = 1337;
+var port = process.env.PORT || 1337;
 app.listen(port);
 console.log('Listening on port ' + port);
